@@ -16,19 +16,16 @@ quote-prefix = "> "
 ordered-list = ordered-list-prefix plaintext
 ordered-list-prefix = ". "
 
-unordered-list = unordered-list-prefix plaintext
-
 unordered-list-prefix = "- "
+unordered-list = unordered-list-prefix plaintext
 
 decorator = "[" *character "]" *whitespace 
 
-plaintext = *(character whitespace)
-
-
-; todo: review + allow all letters not only ascii
 letter = ALPHA
 digit = DIGIT
 character = letter / digit / "_"
+
+plaintext = *(character whitespace)
 
 
 ; todo: decide if CR itself should be allowed as line terminator
