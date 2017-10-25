@@ -1,3 +1,7 @@
+; Defined as per https://tools.ietf.org/pdf/rfc5234.pdf
+
+TAB = %d9
+
 file = *(line)
 line = (blank-line / heading / quote / ordered-list / unordered-list / decorator ) line-ending
 
