@@ -5,35 +5,33 @@ TAB = %d9
 file = *(line)
 line = (blank-line / heading / quote / ordered-list / unordered-list / decorator ) line-ending
 
-blank-line = *(whitespace)
+blank-line = *whitespace
 
-heading = heading-prefix text
+heading = heading-prefix plaintext
 heading-prefix = "# " / "## " / "### " / "#### "
 
-quote = quote-prefix formatted-text
+quote = quote-prefix plaintext
 quote-prefix = "> "
 
-ordered-list = ordered-list-prefix / formatted-text
+ordered-list = ordered-list-prefix plaintext
 ordered-list-prefix = ". "
 
-unordered-list = unordered-list-prefix / formatted-text
+unordered-list = unordered-list-prefix plaintext
 unordered-list-prefix = "- "
 
-decorator = "[" word "]" whitespace
+decorator = "[" *character "]" *whitespace 
 
-; temporarily using ascii chars (excluding control chars)
-; todo: we need a proper definition for this
-text = *(%d32-126)
+plaintext = *(character whitespace)
 
-; todo: define
-formatted-text = text
 
 ; todo: review + allow all letters not only ascii
-word = *(%d48-57 / %d65-90 / %d97-122 / "_")
+letter = ALPHA
+digit = DIGIT
+character = letter / digit / "_"
+
 
 ; todo: decide if CR itself should be allowed as line terminator
 line-ending = CRLF / CR / LF
-
 whitespace = TAB / SP
 
 file
