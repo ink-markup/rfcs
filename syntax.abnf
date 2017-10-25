@@ -1,3 +1,18 @@
+SPACE = %d32
+TAB = %d9
 CR = %d13
 LF = %d10
 CRLF = CR LF
+
+; temporarily using ascii chars (excluding control chars)
+; todo: we need a proper definition for this
+text = *(%d32-126)
+
+file = *(blank-line / heading)
+blank-line = whitespace line-ending
+heading = heading-prefix text line-ending
+heading-prefix = "# " / "## " / "### " / "#### "
+
+; todo: decide if CR itself should be allowed as line terminator
+line-ending = CRLF / CR / LF
+whitespace = TAB / SPACE
