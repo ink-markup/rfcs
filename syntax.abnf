@@ -17,6 +17,7 @@ ordered-list = ordered-list-prefix plaintext
 ordered-list-prefix = ". "
 
 unordered-list = unordered-list-prefix plaintext
+
 unordered-list-prefix = "- "
 
 decorator = "[" *character "]" *whitespace 
@@ -33,5 +34,6 @@ character = letter / digit / "_"
 ; todo: decide if CR itself should be allowed as line terminator
 line-ending = CRLF / CR / LF
 whitespace = TAB / SP
+
 
 file
