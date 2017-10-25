@@ -1,8 +1,4 @@
-SPACE = %d32
 TAB = %d9
-CR = %d13
-LF = %d10
-CRLF = CR LF
 
 file = *(line)
 line = (blank-line / heading / quote / ordered-list / unordered-list / decorator ) line-ending
@@ -36,6 +32,6 @@ word = *(%d48-57 / %d65-90 / %d97-122 / "_")
 ; todo: decide if CR itself should be allowed as line terminator
 line-ending = CRLF / CR / LF
 
-whitespace = TAB / SPACE
+whitespace = TAB / SP
 
 file
