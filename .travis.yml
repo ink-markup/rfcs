@@ -4,7 +4,7 @@ before_install:
 - |
     mkdir abnf-download &&
     cd ./abnf-download &&
-    wget https://rschmidmeister.nyc3.digitaloceanspaces.com/binaries/abnf/x86_64-gnu-linux.tar.gz &&
+    wget -O abnf.tar.gz https://rschmidmeister.nyc3.digitaloceanspaces.com/binaries/abnf/abnf-x86_64-gnu-linux.tar.gz &&
     tar -xvf abnf.tar.gz &&
     sudo cp ./abnf /usr/local/bin/ &&
     cd ../ &&
