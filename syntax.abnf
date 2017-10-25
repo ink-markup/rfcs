@@ -1,11 +1,9 @@
 ; Defined as per https://tools.ietf.org/pdf/rfc5234.pdf
 
-TAB = %d9
-
 file = *(line)
 line = (blank-line / heading / quote / ordered-list / unordered-list / decorator ) line-ending
 
-blank-line = *whitespace
+blank-line = *WSP
 
 heading = heading-prefix plaintext
 heading-prefix = "# " / "## " / "### " / "#### "
@@ -19,18 +17,17 @@ ordered-list-prefix = ". "
 unordered-list-prefix = "- "
 unordered-list = unordered-list-prefix plaintext
 
-decorator = "[" *character "]" *whitespace 
+decorator = "[" *character "]" *WSP
 
 letter = ALPHA ;Todo: Add unicode support
 digit = DIGIT
 character = letter / digit / "_"
 
-plaintext = *(character whitespace)
+plaintext = *(character WSP)
 
 
 ; todo: decide if CR itself should be allowed as line terminator
 line-ending = CRLF / CR / LF
-whitespace = TAB / SP
 
 
 file
