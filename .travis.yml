@@ -1,5 +1,8 @@
 language: generic
 
+notifications:
+  email: false
+
 before_install:
 - |
     mkdir abnf-download &&
