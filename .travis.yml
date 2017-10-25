@@ -1,6 +1,14 @@
-language: node_js
-node_js:
-  - node
+language: generic
+
+before_install:
+- |
+    mkdir abnf-download &&
+    cd ./abnf-download &&
+    wget https://rschmidmeister.nyc3.digitaloceanspaces.com/binaries/x86_64-gnu-linux/abnf.tar.gz &&
+    tar -xvf abnf.tar.gz &&
+    sudo cp ./abnf /usr/local/bin/ &&
+    cd ../ &&
+    rm -rf ./abnf-download
 
 script:
-- npm run lint
+- make lint
