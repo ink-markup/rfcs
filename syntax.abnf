@@ -21,7 +21,7 @@ unordered-list = unordered-list-prefix plaintext
 
 decorator = "[" *character "]" *whitespace 
 
-letter = ALPHA
+letter = ALPHA ;Todo: Add unicode support
 digit = DIGIT
 character = letter / digit / "_"
 
