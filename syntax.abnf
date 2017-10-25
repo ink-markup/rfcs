@@ -1,0 +1,3 @@
+CR = %d13
+LF = %d10
+CRLF = CR LF

@@ -1,0 +1,12 @@
+{
+  "name": "@ink-markup/spec",
+  "version": "0.0.0",
+  "description": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "apg -i syntax.abnf -o /dev/null"
+  },
+  "devDependencies": {
+    "apg": "^3.1.1"
+  }
+}
