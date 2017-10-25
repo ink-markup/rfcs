@@ -1,5 +1,3 @@
-TAB = %d9
-
 file = *(line)
 line = (blank-line / heading / quote / ordered-list / unordered-list / decorator ) line-ending
 
@@ -11,10 +9,10 @@ heading-prefix = "# " / "## " / "### " / "#### "
 quote = quote-prefix formatted-text
 quote-prefix = "> "
 
-ordered-list = ordered-list-prefix / formatted-text
+ordered-list = ordered-list-prefix formatted-text
 ordered-list-prefix = ". "
 
-unordered-list = unordered-list-prefix / formatted-text
+unordered-list = unordered-list-prefix formatted-text
 unordered-list-prefix = "- "
 
 decorator = "[" word "]" whitespace
@@ -32,6 +30,8 @@ word = *(%d48-57 / %d65-90 / %d97-122 / "_")
 ; todo: decide if CR itself should be allowed as line terminator
 line-ending = CRLF / CR / LF
 
-whitespace = TAB / SP
+whitespace = *(TAB / SP)
+
+TAB = %d9
 
 file
