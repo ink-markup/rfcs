@@ -4,22 +4,38 @@ CR = %d13
 LF = %d10
 CRLF = CR LF
 
-file = *(blank-line / heading)
+file = *(line)
+line = (blank-line / heading / quote / ordered-list / unordered-list / decorator ) line-ending
 
-blank-line = whitespace line-ending quote
+blank-line = *(whitespace)
 
-heading = heading-prefix text line-ending
+heading = heading-prefix text
 heading-prefix = "# " / "## " / "### " / "#### "
 
-quote = quote-prefix text
+quote = quote-prefix formatted-text
 quote-prefix = "> "
+
+ordered-list = ordered-list-prefix / formatted-text
+ordered-list-prefix = ". "
+
+unordered-list = unordered-list-prefix / formatted-text
+unordered-list-prefix = "- "
+
+decorator = "[" word "]" whitespace
 
 ; temporarily using ascii chars (excluding control chars)
 ; todo: we need a proper definition for this
 text = *(%d32-126)
 
+; todo: define
+formatted-text = text
+
+; todo: review + allow all letters not only ascii
+word = *(%d48-57 / %d65-90 / %d97-122 / "_")
+
 ; todo: decide if CR itself should be allowed as line terminator
 line-ending = CRLF / CR / LF
+
 whitespace = TAB / SPACE
 
 file
