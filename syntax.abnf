@@ -1,7 +1,7 @@
 ; Defined as per https://tools.ietf.org/pdf/rfc5234.pdf
 
-file = *(line)
-line = (blank-line / heading / quote / ordered-list / unordered-list / decorator ) line-ending
+file = *(line line-ending) *1(line)
+line = (blank-line / heading / quote / ordered-list / unordered-list / decorator)
 
 blank-line = *WSP
 
@@ -11,11 +11,13 @@ heading-prefix = "# " / "## " / "### " / "#### "
 quote = quote-prefix plaintext
 quote-prefix = "> "
 
-ordered-list = ordered-list-prefix plaintext
+ordered-list = ordered-list-prefix plaintext *(list-continuation)
 ordered-list-prefix = ". "
 
 unordered-list-prefix = "- "
-unordered-list = unordered-list-prefix plaintext
+unordered-list = unordered-list-prefix plaintext *(list-continuation)
+
+list-continuation = line-ending "  " plaintext
 
 decorator = "[" *character "]" *WSP
 
@@ -23,8 +25,7 @@ letter = ALPHA ;Todo: Add unicode support
 digit = DIGIT
 character = letter / digit / "_"
 
-plaintext = *(character WSP)
-
+plaintext = *(<any UTF-8 char except CRLF, CR or LF>)
 
 ; todo: decide if CR itself should be allowed as line terminator
 line-ending = CRLF / CR / LF
