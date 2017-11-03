@@ -1,29 +1,37 @@
 ; Defined as per https://tools.ietf.org/pdf/rfc5234.pdf
 
-file = *(line line-ending) [line]
-line = (blank-line / heading / quote / ordered-list / unordered-list / decorator)
+file = *(block / blank-line)
 
-blank-line = *WSP
+block = heading / quote / ordered-list / unordered-list / preformatted
+
+blank-line = *WSP line-ending
 
 heading = heading-prefix plaintext
 heading-prefix = "# " / "## " / "### " / "#### "
 
-quote = quote-prefix plaintext
+quote = 1*(quote-line)
+quote-line = quote-prefix plaintext line-ending
 quote-prefix = "> "
 
-ordered-list = ordered-list-prefix plaintext *(list-continuation)
+ordered-list = 1*(ordered-list-line)
+ordered-list-line = ordered-list-prefix plaintext line-ending *(list-continuation)
 ordered-list-prefix = ". "
 
+unordered-list = 1*(unordered-list-line)
+unordered-list-line = unordered-list-prefix plaintext line-ending *(list-continuation)
 unordered-list-prefix = "- "
-unordered-list = unordered-list-prefix plaintext *(list-continuation)
 
-list-continuation = line-ending "  " plaintext
+list-continuation = "  " plaintext line-ending
+
+preformatted = decorator separator *(plain-line) separator
 
 decorator = "[" decorator-name [":" *WSP decorator-params] "]" *WSP
-
 decorator-params = *(decorator-param "," *WSP) decorator-param
 decorator-name = *character
 decorator-param = *character
+
+separator = 3*("-")
+plain-line = *(plaintext) line-ending
 
 letter = ALPHA ;Todo: Add unicode support
 digit = DIGIT
@@ -31,8 +39,6 @@ character = letter / digit / "_"
 
 plaintext = *(<any UTF-8 char except CRLF, CR or LF>)
 
-; todo: decide if CR itself should be allowed as line terminator
-line-ending = CRLF / CR / LF
-
+line-ending = CRLF / LF / <EOF>
 
 file
