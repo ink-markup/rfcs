@@ -1,6 +1,6 @@
 ; Defined as per https://tools.ietf.org/pdf/rfc5234.pdf
 
-file = *(line line-ending) *1(line)
+file = *(line line-ending) [line]
 line = (blank-line / heading / quote / ordered-list / unordered-list / decorator)
 
 blank-line = *WSP
@@ -19,7 +19,11 @@ unordered-list = unordered-list-prefix plaintext *(list-continuation)
 
 list-continuation = line-ending "  " plaintext
 
-decorator = "[" *character "]" *WSP
+decorator = "[" decorator-name [":" *WSP decorator-params] "]" *WSP
+
+decorator-params = *(decorator-param "," *WSP) decorator-param
+decorator-name = *character
+decorator-param = *character
 
 letter = ALPHA ;Todo: Add unicode support
 digit = DIGIT
