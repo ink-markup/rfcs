@@ -23,7 +23,7 @@ unordered-list-prefix = "- "
 
 list-continuation = "  " plaintext line-ending
 
-preformatted = decorator separator *(plain-line) separator
+preformatted = [decorator] separator *(plain-line) separator
 
 decorator = "[" decorator-name [":" *WSP decorator-params] "]" *WSP
 decorator-params = *(decorator-param "," *WSP) decorator-param
