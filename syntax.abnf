@@ -56,6 +56,3 @@ plaintext = %x20-10FFFF
 ; plaintext = 10*(ascii-letter)
 
 line-ending = %x0D.0A / %x0A
-
-; todo: remove this line and make our validator aware of the "root" rule
-file
