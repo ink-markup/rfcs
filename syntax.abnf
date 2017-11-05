@@ -1,4 +1,11 @@
 ; Defined as per https://tools.ietf.org/pdf/rfc5234.pdf
+; WARNING: This is a work in progress and not yet authoritative.
+
+; Unicode character ranges should be commented to allow easier understanding without
+; the need to look up the ranges.
+; For an overview of unicode ranges see: http://billposer.org/Linguistics/Computation/UnicodeRanges.html
+
+; Note: For the sake of simplicity an <EOF> is treated as a valid line ending.
 
 file = *(block / blank-line)
 
@@ -6,7 +13,7 @@ block = heading / quote / ordered-list / unordered-list / preformatted
 
 blank-line = *WSP line-ending
 
-heading = heading-prefix plaintext
+heading = heading-prefix plaintext line-ending
 heading-prefix = "# " / "## " / "### " / "#### "
 
 quote = 1*(quote-line)
@@ -23,22 +30,32 @@ unordered-list-prefix = "- "
 
 list-continuation = "  " plaintext line-ending
 
-preformatted = [decorator] separator *(plain-line) separator
+preformatted = [decorator line-ending] separator *(plain-line) separator
 
 decorator = "[" decorator-name [":" *WSP decorator-params] "]" *WSP
 decorator-params = *(decorator-param "," *WSP) decorator-param
-decorator-name = *character
-decorator-param = *character
+decorator-name = 1*ascii-char
+decorator-param = 1*ascii-char
 
-separator = 3*("-")
+; A separator is defined as at least 3 dashes (---) in order to prevent conflicts with
+; comments in some languages. (e.g. SQL uses two dashes (--) for comments.)
+separator = 3*(%x2D) line-ending
 plain-line = *(plaintext) line-ending
 
-letter = ALPHA ;Todo: Add unicode support
-digit = DIGIT
-character = letter / digit / "_"
+; Ascii values suffice in certain cases (e.g. decorator names or params)
+; We might need to extend this in the future
+ascii-letter = %x41-5A / %x61-7A
+digit = %x30-39
+ascii-char = ascii-letter / digit / %x5F
 
-plaintext = *(<any UTF-8 char except CRLF, CR or LF>)
+; this range includes all valid unicode characters,
+; starting with the first non-control char %x20 up to limit
+plaintext = %x20-10FFFF
 
-line-ending = CRLF / LF / <EOF>
+; When testing with `abnfgen` enable this line and comment the previous definition
+; plaintext = 10*(ascii-letter)
 
+line-ending = %x0D.0A / %x0A
+
+; todo: remove this line and make our validator aware of the "root" rule
 file
