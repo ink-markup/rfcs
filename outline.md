@@ -6,7 +6,9 @@ Heading Levels do not directly correspond with `h*` tags in HTML. Depending on t
 
 ### Rendering
 
-Heading Level Hierarchy must be preserved in rendering.
+The relative hierarchy between section heading levels must always be preserved.
+
+> Example: A HTML renderer may choose to start section titles with `h3` instead of `h2`. Hence it will render the next levels as `h4`, `h5`.
 
 
 ### Definition of Levels
