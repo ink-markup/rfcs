@@ -16,7 +16,7 @@ A work-in-progress syntax definition in [ABNF](https://en.wikipedia.org/wiki/Aug
 
 ## Outline
 
-The outline definitions for squid are found in [outline.md](./outline.md).
+The outline definitions for squid are found in [outline.md](./spec/outline.md).
 
 ## Blocks
 
