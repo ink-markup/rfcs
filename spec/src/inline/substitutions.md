@@ -22,7 +22,7 @@ Squid supports the following replacements:
 
 `?!` and `!?` are replaced with `‽`. The replacement is only performed if there is exactly one question mark followed by an exclamation mark (or vice versa).
 
-## Reversed Interrobang
+## Gnaborretni
 
 `¿¡` and `¡¿` are replaced with `⸘`. The replacement is only performed if there is exactly one question mark followed by an exclamation mark (or vice versa).
 
