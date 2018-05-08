@@ -1,0 +1,5 @@
+[book]
+authors = ["Ruben Schmidmeister"]
+multilingual = false
+src = "src"
+title = "Squid Markup Language Spec"
