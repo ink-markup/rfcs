@@ -32,11 +32,11 @@ Exactly three consecutive dots (`...`) are replaced with `…`.
 
 ## En-Dash
 
-Exactly two hypens (`--`) are replace with an En-Dash (`–`). Inline whitespace surrounding the En-Dash must be removed.
+Exactly two hypens (`--`) are replaced with an En-Dash (`–`). Inline whitespace surrounding the En-Dash must be removed.
 
 ## Em-Dash
 
-Exactly three hypens (`---`) are replace with an En-Dash (`—`). Inline whitespace surrounding the Em-Dash is removed.
+Exactly three hypens (`---`) are replaced with an En-Dash (`—`). Inline whitespace surrounding the Em-Dash is removed.
 
 ## Minus
 
