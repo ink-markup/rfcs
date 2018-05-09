@@ -1,0 +1,319 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Squid Markup Language Spec</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <base href="">
+
+        <link rel="stylesheet" href="book.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+
+        <link rel="shortcut icon" href="favicon.png">
+
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="_FontAwesome/css/font-awesome.css">
+
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+
+    </head>
+    <body class="light">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { } 
+            if (theme === null || theme === undefined) { theme = 'light'; }
+            document.body.className = theme;
+            document.querySelector('html').className = theme + ' js';
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <ol class="chapter"><li><a href="preliminaries.html"><strong aria-hidden="true">1.</strong> Preliminaries</a></li><li><ol class="section"><li><a href="preliminaries/characters.html"><strong aria-hidden="true">1.1.</strong> Characters</a></li></ol></li><li><a href="inline.html"><strong aria-hidden="true">2.</strong> Inline Syntax</a></li><li><ol class="section"><li><a href="inline/substitutions.html"><strong aria-hidden="true">2.1.</strong> Substitutions</a></li></ol></li><li><a href="blocks.html"><strong aria-hidden="true">3.</strong> Blocks</a></li><li><ol class="section"><li><a href="blocks/preformatted.html"><strong aria-hidden="true">3.1.</strong> Preformatted</a></li></ol></li><li><a href="misc.html"><strong aria-hidden="true">4.</strong> Misc</a></li><li><ol class="section"><li><a href="misc/errors.html"><strong aria-hidden="true">4.1.</strong> Errors</a></li><li><a href="misc/outline.html"><strong aria-hidden="true">4.2.</strong> Outline</a></li></ol></li></ol>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar" class="menu-bar">
+                    <div id="menu-bar-sticky-container">
+                        <div class="left-buttons">
+                            <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                                <i class="fa fa-bars"></i>
+                            </button>
+                            <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                                <i class="fa fa-paint-brush"></i>
+                            </button>
+                            <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                                <li role="none"><button role="menuitem" class="theme" id="light">Light <span class="default">(default)</span></button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                            </ul>
+                            
+                            <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                                <i class="fa fa-search"></i>
+                            </button>
+                            
+                        </div>
+
+                        <h1 class="menu-title">Squid Markup Language Spec</h1> 
+
+                        <div class="right-buttons">
+                            <a href="print.html" title="Print this book" aria-label="Print this book">
+                                <i id="print-button" class="fa fa-print"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <a class="header" href="print.html#preliminaries" id="preliminaries"><h1>Preliminaries</h1></a>
+<a class="header" href="print.html#characters" id="characters"><h1>Characters</h1></a>
+<p>The following definitions are written as ABNF.</p>
+<pre><code class="language-abnf"># horizontal tab / line feed / carriage return / space
+whitespace = %x09 %x0A %x0D %x20
+
+# horizontal tab / space
+inline_whitespace = %x09 %x20
+</code></pre>
+<a class="header" href="print.html#inline-syntax" id="inline-syntax"><h1>Inline Syntax</h1></a>
+<a class="header" href="print.html#substitutions" id="substitutions"><h1>Substitutions</h1></a>
+<blockquote>
+<p>Github Issues:
+<a href="https://github.com/squid-lang/squid/issues/30">#30</a>,
+<a href="https://github.com/squid-lang/squid/issues/31">#31</a></p>
+</blockquote>
+<blockquote>
+<p>Relevant Link:
+<a href="https://english.stackexchange.com/questions/2116/when-should-i-use-an-em-dash-an-en-dash-and-a-hyphen">When should I use an em-dash, an en-dash, and a hyphen?</a></p>
+</blockquote>
+<a class="header" href="print.html#overview" id="overview"><h2>Overview</h2></a>
+<p>Squid supports the following replacements:</p>
+<ul>
+<li><code>?!</code> and <code>!?</code> (Interrobang): <code>‽</code></li>
+<li><code>¿¡</code> and <code>¡¿</code> (Reverse Interrobang): <code>⸘</code></li>
+<li><code>...</code> (Ellipsis): <code>…</code></li>
+<li><code>--</code> (En-Dash): <code>–</code></li>
+<li><code>---</code> (Em-Dash): <code>—</code></li>
+<li><code>-</code> (Minus): <code>−</code></li>
+</ul>
+<a class="header" href="print.html#interrobang" id="interrobang"><h2>Interrobang</h2></a>
+<p><code>?!</code> and <code>!?</code> are replaced with <code>‽</code>. The replacement is only performed if there is exactly one question mark followed by an exclamation mark (or vice versa).</p>
+<a class="header" href="print.html#gnaborretni" id="gnaborretni"><h2>Gnaborretni</h2></a>
+<p><code>¿¡</code> and <code>¡¿</code> are replaced with <code>⸘</code>. The replacement is only performed if there is exactly one question mark followed by an exclamation mark (or vice versa).</p>
+<a class="header" href="print.html#ellipsis" id="ellipsis"><h2>Ellipsis</h2></a>
+<p>Exactly three consecutive dots (<code>...</code>) are replaced with <code>…</code>.</p>
+<a class="header" href="print.html#en-dash" id="en-dash"><h2>En-Dash</h2></a>
+<p>Exactly two hypens (<code>--</code>) are replaced with an En-Dash (<code>–</code>). Inline whitespace surrounding the En-Dash must be removed.</p>
+<a class="header" href="print.html#em-dash" id="em-dash"><h2>Em-Dash</h2></a>
+<p>Exactly three hypens (<code>---</code>) are replaced with an En-Dash (<code>—</code>). Inline whitespace surrounding the Em-Dash is removed.</p>
+<a class="header" href="print.html#minus" id="minus"><h2>Minus</h2></a>
+<p>Exactly one hyphen (<code>-</code>) surrounded by inline whitespace will be converted to a minus sign (<code>−</code>).</p>
+<a class="header" href="print.html#blocks" id="blocks"><h1>Blocks</h1></a>
+<a class="header" href="print.html#preformatted" id="preformatted"><h1>Preformatted</h1></a>
+<a class="header" href="print.html#syntax" id="syntax"><h2>Syntax</h2></a>
+<p>A preformatted block is delimited by separators (line containing three or more dashes (<code>-</code>)).</p>
+<p>Anything inside the block is not parsed.</p>
+<p>The number of dashes starting and ending the block must not be the same. (It is perfectly valid to start a block with <code>---</code> and end it with <code>-----</code>)</p>
+<a class="header" href="print.html#decorator" id="decorator"><h2>Decorator</h2></a>
+<p>A preformatted block can optimally have a decorator that must be directly preceding (without lines in between) the preformatted block.</p>
+<p>A decorator influences the renderning of the preformatted block.</p>
+<p>Future extensions might define a decorator type like <code>table</code> that renders the block as a table.</p>
+<a class="header" href="print.html#decorator-parameters" id="decorator-parameters"><h3>Decorator parameters</h3></a>
+<p>Decorators can accept an arbitrary arguments after the decorator's name and a colon (<code>:</code>). Arguments are separated by commas (<code>,</code>).</p>
+<a class="header" href="print.html#unknown-decorators" id="unknown-decorators"><h3>Unknown decorators</h3></a>
+<p>Unknown or invalid decorators are ignored, resulting in the block being rendered with the default settings.</p>
+<p>Unknown decorator params are ignored.</p>
+<a class="header" href="print.html#types" id="types"><h2>Types</h2></a>
+<a class="header" href="print.html#code" id="code"><h3>Code</h3></a>
+<blockquote>
+<p>T.B.D.</p>
+</blockquote>
+<blockquote>
+<p>TODO: Define behaviour if no language is specified (documentation systems e.g. rustdoc might assume a default language)</p>
+</blockquote>
+<a class="header" href="print.html#table" id="table"><h3>Table</h3></a>
+<blockquote>
+<p>T.B.D.</p>
+</blockquote>
+<a class="header" href="print.html#meta" id="meta"><h3>Meta</h3></a>
+<p><strong>This type must must not be rendered.</strong></p>
+<blockquote>
+<p>T.B.D.</p>
+</blockquote>
+<a class="header" href="print.html#example" id="example"><h2>Example</h2></a>
+<pre><code>[table]
+---------------------------
+| Name   | Favorite Color |
+|-------------------------|
+| Jordan | Purple         |
+| Peter  | Green          |
+| Jill   | Blue           |
+---------------------------
+
+[code: rust]
+---
+fn main() {
+    println!(&quot;hello world&quot;);
+}
+---
+
+[foo: bar, baz, quz]
+---
+
+---
+</code></pre>
+<a class="header" href="print.html#rendering" id="rendering"><h2>Rendering</h2></a>
+<a class="header" href="print.html#html" id="html"><h4>HTML</h4></a>
+<p>A preformatted block is wrapped in a <code>&lt;pre&gt;</code> tag. All whitespace inside the block must be preserved.</p>
+<blockquote>
+<p>TODO: how do we treat trailing whitespace? Should that be trimmed or preserved?</p>
+</blockquote>
+<a class="header" href="print.html#misc" id="misc"><h1>Misc</h1></a>
+<p>Things that aren't finished or are not properly integrated into the new structure.</p>
+<a class="header" href="print.html#errors" id="errors"><h1>Errors</h1></a>
+<p>All errors during parsing and rendering must be handled &quot;softly&quot;.</p>
+<a class="header" href="print.html#warnings" id="warnings"><h2>Warnings</h2></a>
+<p>Parsers and renderers may choose to emit warnings.</p>
+<a class="header" href="print.html#outline" id="outline"><h1>Outline</h1></a>
+<a class="header" href="print.html#heading-levels" id="heading-levels"><h2>Heading Levels</h2></a>
+<p>Heading Levels do not directly correspond with <code>h*</code> tags in HTML. Depending on the context of where the document is rendered (e.g. inside a comment) the heading levels may be adjusted accordingly.</p>
+<a class="header" href="print.html#rendering-1" id="rendering-1"><h3>Rendering</h3></a>
+<p>The relative hierarchy between section heading levels must always be preserved.</p>
+<blockquote>
+<p>Example: A HTML renderer may choose to start section titles with <code>h3</code> instead of <code>h2</code>. Hence it will render the next levels as <code>h4</code>, <code>h5</code>.</p>
+</blockquote>
+<a class="header" href="print.html#definition-of-levels" id="definition-of-levels"><h3>Definition of Levels</h3></a>
+<p>Headings with levels 1-4 are supported.
+The assigned meaning of these levels is as follows:</p>
+<pre><code>Heading Level 1 =&gt; Document Title
+Heading Level 2 =&gt; Section
+Heading Level 3 =&gt; Subsection
+Heading Level 4 =&gt; Subsubsection
+</code></pre>
+<a class="header" href="print.html#document-title" id="document-title"><h3>Document Title</h3></a>
+<p>Headings with level 1 represent the document's title.</p>
+<p>Per document only one heading with level 1 is allowed. Implementation must drop all headings with level 1 after the first during parsing.</p>
+<a class="header" href="print.html#structure" id="structure"><h2>Structure</h2></a>
+<p>Section Headings</p>
+<a class="header" href="print.html#parser-output" id="parser-output"><h2>Parser Output</h2></a>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+        <script type="text/javascript">
+            document.addEventListener('DOMContentLoaded', function() {
+                window.print();
+            })
+        </script>
+        
+
+        
+
+        
+        <script src="searchindex.js" type="text/javascript" charset="utf-8"></script>
+        
+        
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+    </body>
+</html>
