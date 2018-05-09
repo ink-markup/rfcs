@@ -10,7 +10,9 @@
   - [Preformatted](./blocks/preformatted.md)
 
 - [Misc](./misc.md)
+   - [Mascot](./misc/mascot.md)
    - [Errors](./misc/errors.md)
+   - [Concept](./misc/concept.md)
    - [Outline](./misc/outline.md)
 
 

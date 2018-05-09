@@ -17,9 +17,3 @@
 - Line starter symbols (#, >, -, etc) only work when used in the first column (white space is not ignored)
 - Line starter symbols only work when followed by at least one space
 - Trailing whitespace is fine and doesn't break anything
-
-## TBD
-
-- File extension
-- More syntax
-- HTML Rendering
