@@ -1,12 +1,13 @@
 dist: trusty
 sudo: false
 
-language: generic
+language: rust
+cache: cargo
 
 notifications:
   email: false
 
-before_install:
+before_script:
 - |
     mkdir abnf-download &&
     cd ./abnf-download &&
@@ -15,9 +16,11 @@ before_install:
     sudo cp ./abnf /usr/local/bin/ &&
     cd ../ &&
     rm -rf ./abnf-download
+- cargo install mdbook --force
 
 script:
 - make lint
+- mdbook build spec/
 
 deploy:
   provider: script
