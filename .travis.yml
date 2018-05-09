@@ -16,7 +16,7 @@ before_script:
     sudo cp ./abnf /usr/local/bin/ &&
     cd ../ &&
     rm -rf ./abnf-download
-- cargo install mdbook --force
+- cargo install mdbook || true
 
 script:
 - make lint
