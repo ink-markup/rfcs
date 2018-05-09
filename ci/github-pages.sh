@@ -12,7 +12,7 @@ cp CNAME _config.yml $TEMP/
 $GIT init
 
 $GIT config user.name "Ink the Squid"
-$GIT config user.name "ink@squid-lang.org"
+$GIT config user.email "ink@squid-lang.org"
 
 $GIT remote add upstream "https://$GH_TOKEN@github.com/squid-lang/spec.git"
 $GIT fetch upstream
