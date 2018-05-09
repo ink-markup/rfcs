@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Preformatted - Squid Markup Language Spec</title>
+        <title>Concept - Squid Markup Language Spec</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -69,7 +69,7 @@
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
-            <ol class="chapter"><li><a href="preliminaries.html"><strong aria-hidden="true">1.</strong> Preliminaries</a></li><li><ol class="section"><li><a href="preliminaries/characters.html"><strong aria-hidden="true">1.1.</strong> Characters</a></li></ol></li><li><a href="inline.html"><strong aria-hidden="true">2.</strong> Inline Syntax</a></li><li><ol class="section"><li><a href="inline/substitutions.html"><strong aria-hidden="true">2.1.</strong> Substitutions</a></li></ol></li><li><a href="blocks.html"><strong aria-hidden="true">3.</strong> Blocks</a></li><li><ol class="section"><li><a href="blocks/preformatted.html" class="active"><strong aria-hidden="true">3.1.</strong> Preformatted</a></li></ol></li><li><a href="misc.html"><strong aria-hidden="true">4.</strong> Misc</a></li><li><ol class="section"><li><a href="misc/mascot.html"><strong aria-hidden="true">4.1.</strong> Mascot</a></li><li><a href="misc/errors.html"><strong aria-hidden="true">4.2.</strong> Errors</a></li><li><a href="misc/concept.html"><strong aria-hidden="true">4.3.</strong> Concept</a></li><li><a href="misc/outline.html"><strong aria-hidden="true">4.4.</strong> Outline</a></li></ol></li></ol>
+            <ol class="chapter"><li><a href="preliminaries.html"><strong aria-hidden="true">1.</strong> Preliminaries</a></li><li><ol class="section"><li><a href="preliminaries/characters.html"><strong aria-hidden="true">1.1.</strong> Characters</a></li></ol></li><li><a href="inline.html"><strong aria-hidden="true">2.</strong> Inline Syntax</a></li><li><ol class="section"><li><a href="inline/substitutions.html"><strong aria-hidden="true">2.1.</strong> Substitutions</a></li></ol></li><li><a href="blocks.html"><strong aria-hidden="true">3.</strong> Blocks</a></li><li><ol class="section"><li><a href="blocks/preformatted.html"><strong aria-hidden="true">3.1.</strong> Preformatted</a></li></ol></li><li><a href="misc.html"><strong aria-hidden="true">4.</strong> Misc</a></li><li><ol class="section"><li><a href="misc/mascot.html"><strong aria-hidden="true">4.1.</strong> Mascot</a></li><li><a href="misc/errors.html"><strong aria-hidden="true">4.2.</strong> Errors</a></li><li><a href="misc/concept.html" class="active"><strong aria-hidden="true">4.3.</strong> Concept</a></li><li><a href="misc/outline.html"><strong aria-hidden="true">4.4.</strong> Outline</a></li></ol></li></ol>
         </nav>
 
         <div id="page-wrapper" class="page-wrapper">
@@ -133,78 +133,37 @@
 
                 <div id="content" class="content">
                     <main>
-                        <a class="header" href="blocks/preformatted.html#preformatted" id="preformatted"><h1>Preformatted</h1></a>
-<a class="header" href="blocks/preformatted.html#syntax" id="syntax"><h2>Syntax</h2></a>
-<p>A preformatted block is delimited by separators (line containing three or more dashes (<code>-</code>)).</p>
-<p>Anything inside the block is not parsed.</p>
-<p>The number of dashes starting and ending the block must not be the same. (It is perfectly valid to start a block with <code>---</code> and end it with <code>-----</code>)</p>
-<a class="header" href="blocks/preformatted.html#decorator" id="decorator"><h2>Decorator</h2></a>
-<p>A preformatted block can optimally have a decorator that must be directly preceding (without lines in between) the preformatted block.</p>
-<p>A decorator influences the renderning of the preformatted block.</p>
-<p>Future extensions might define a decorator type like <code>table</code> that renders the block as a table.</p>
-<a class="header" href="blocks/preformatted.html#decorator-parameters" id="decorator-parameters"><h3>Decorator parameters</h3></a>
-<p>Decorators can accept an arbitrary arguments after the decorator's name and a colon (<code>:</code>). Arguments are separated by commas (<code>,</code>).</p>
-<a class="header" href="blocks/preformatted.html#unknown-decorators" id="unknown-decorators"><h3>Unknown decorators</h3></a>
-<p>Unknown or invalid decorators are ignored, resulting in the block being rendered with the default settings.</p>
-<p>Unknown decorator params are ignored.</p>
-<a class="header" href="blocks/preformatted.html#types" id="types"><h2>Types</h2></a>
-<a class="header" href="blocks/preformatted.html#code" id="code"><h3>Code</h3></a>
-<blockquote>
-<p>T.B.D.</p>
-</blockquote>
-<blockquote>
-<p>TODO: Define behaviour if no language is specified (documentation systems e.g. rustdoc might assume a default language)</p>
-</blockquote>
-<a class="header" href="blocks/preformatted.html#table" id="table"><h3>Table</h3></a>
-<blockquote>
-<p>T.B.D.</p>
-</blockquote>
-<a class="header" href="blocks/preformatted.html#meta" id="meta"><h3>Meta</h3></a>
-<p><strong>This type must must not be rendered.</strong></p>
-<blockquote>
-<p>T.B.D.</p>
-</blockquote>
-<a class="header" href="blocks/preformatted.html#example" id="example"><h2>Example</h2></a>
-<pre><code>[table]
----------------------------
-| Name   | Favorite Color |
-|-------------------------|
-| Jordan | Purple         |
-| Peter  | Green          |
-| Jill   | Blue           |
----------------------------
-
-[code: rust]
----
-fn main() {
-    println!(&quot;hello world&quot;);
-}
----
-
-[foo: bar, baz, quz]
----
-
----
-</code></pre>
-<a class="header" href="blocks/preformatted.html#rendering" id="rendering"><h2>Rendering</h2></a>
-<a class="header" href="blocks/preformatted.html#html" id="html"><h4>HTML</h4></a>
-<p>A preformatted block is wrapped in a <code>&lt;pre&gt;</code> tag. All whitespace inside the block must be preserved.</p>
-<blockquote>
-<p>TODO: how do we treat trailing whitespace? Should that be trimmed or preserved?</p>
-</blockquote>
+                        <a class="header" href="misc/concept.html#concept" id="concept"><h1>Concept</h1></a>
+<a class="header" href="misc/concept.html#general" id="general"><h2>General</h2></a>
+<ul>
+<li>there should always be only one way to do something</li>
+<li>markup should look familiar (shouldn't invent anything new)</li>
+<li>no ambiguous markup</li>
+<li>graceful degrading (no parse errors)</li>
+<li>extensibility (extensible blocks)</li>
+<li>should also look fairly good when viewed as plain text</li>
+</ul>
+<a class="header" href="misc/concept.html#rules" id="rules"><h2>Rules</h2></a>
+<ul>
+<li>Lines in text do not generate line breaks</li>
+<li>Lines terminated by two or more spaces generate a line break</li>
+<li>Line starter symbols (#, &gt;, -, etc) only work when used in the first column (white space is not ignored)</li>
+<li>Line starter symbols only work when followed by at least one space</li>
+<li>Trailing whitespace is fine and doesn't break anything</li>
+</ul>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
                         
-                            <a rel="prev" href="blocks.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="misc/errors.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
                         
 
                         
-                            <a rel="next" href="misc.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="misc/outline.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         
@@ -216,13 +175,13 @@ fn main() {
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                 
-                    <a href="blocks.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a href="misc/errors.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
                 
 
                 
-                    <a href="misc.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a href="misc/outline.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
                 

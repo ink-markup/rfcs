@@ -69,7 +69,7 @@
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
-            <ol class="chapter"><li><a href="preliminaries.html"><strong aria-hidden="true">1.</strong> Preliminaries</a></li><li><ol class="section"><li><a href="preliminaries/characters.html"><strong aria-hidden="true">1.1.</strong> Characters</a></li></ol></li><li><a href="inline.html"><strong aria-hidden="true">2.</strong> Inline Syntax</a></li><li><ol class="section"><li><a href="inline/substitutions.html"><strong aria-hidden="true">2.1.</strong> Substitutions</a></li></ol></li><li><a href="blocks.html"><strong aria-hidden="true">3.</strong> Blocks</a></li><li><ol class="section"><li><a href="blocks/preformatted.html"><strong aria-hidden="true">3.1.</strong> Preformatted</a></li></ol></li><li><a href="misc.html"><strong aria-hidden="true">4.</strong> Misc</a></li><li><ol class="section"><li><a href="misc/errors.html"><strong aria-hidden="true">4.1.</strong> Errors</a></li><li><a href="misc/outline.html"><strong aria-hidden="true">4.2.</strong> Outline</a></li></ol></li></ol>
+            <ol class="chapter"><li><a href="preliminaries.html"><strong aria-hidden="true">1.</strong> Preliminaries</a></li><li><ol class="section"><li><a href="preliminaries/characters.html"><strong aria-hidden="true">1.1.</strong> Characters</a></li></ol></li><li><a href="inline.html"><strong aria-hidden="true">2.</strong> Inline Syntax</a></li><li><ol class="section"><li><a href="inline/substitutions.html"><strong aria-hidden="true">2.1.</strong> Substitutions</a></li></ol></li><li><a href="blocks.html"><strong aria-hidden="true">3.</strong> Blocks</a></li><li><ol class="section"><li><a href="blocks/preformatted.html"><strong aria-hidden="true">3.1.</strong> Preformatted</a></li></ol></li><li><a href="misc.html"><strong aria-hidden="true">4.</strong> Misc</a></li><li><ol class="section"><li><a href="misc/mascot.html"><strong aria-hidden="true">4.1.</strong> Mascot</a></li><li><a href="misc/errors.html"><strong aria-hidden="true">4.2.</strong> Errors</a></li><li><a href="misc/concept.html"><strong aria-hidden="true">4.3.</strong> Concept</a></li><li><a href="misc/outline.html"><strong aria-hidden="true">4.4.</strong> Outline</a></li></ol></li></ol>
         </nav>
 
         <div id="page-wrapper" class="page-wrapper">
@@ -237,10 +237,30 @@ fn main() {
 </blockquote>
 <a class="header" href="print.html#misc" id="misc"><h1>Misc</h1></a>
 <p>Things that aren't finished or are not properly integrated into the new structure.</p>
+<a class="header" href="print.html#mascot" id="mascot"><h1>Mascot</h1></a>
+<p>The mascot is officially named <a href="https://github.com/timetabio/Ink">&quot;Ink&quot;</a>.</p>
 <a class="header" href="print.html#errors" id="errors"><h1>Errors</h1></a>
 <p>All errors during parsing and rendering must be handled &quot;softly&quot;.</p>
 <a class="header" href="print.html#warnings" id="warnings"><h2>Warnings</h2></a>
 <p>Parsers and renderers may choose to emit warnings.</p>
+<a class="header" href="print.html#concept" id="concept"><h1>Concept</h1></a>
+<a class="header" href="print.html#general" id="general"><h2>General</h2></a>
+<ul>
+<li>there should always be only one way to do something</li>
+<li>markup should look familiar (shouldn't invent anything new)</li>
+<li>no ambiguous markup</li>
+<li>graceful degrading (no parse errors)</li>
+<li>extensibility (extensible blocks)</li>
+<li>should also look fairly good when viewed as plain text</li>
+</ul>
+<a class="header" href="print.html#rules" id="rules"><h2>Rules</h2></a>
+<ul>
+<li>Lines in text do not generate line breaks</li>
+<li>Lines terminated by two or more spaces generate a line break</li>
+<li>Line starter symbols (#, &gt;, -, etc) only work when used in the first column (white space is not ignored)</li>
+<li>Line starter symbols only work when followed by at least one space</li>
+<li>Trailing whitespace is fine and doesn't break anything</li>
+</ul>
 <a class="header" href="print.html#outline" id="outline"><h1>Outline</h1></a>
 <a class="header" href="print.html#heading-levels" id="heading-levels"><h2>Heading Levels</h2></a>
 <p>Heading Levels do not directly correspond with <code>h*</code> tags in HTML. Depending on the context of where the document is rendered (e.g. inside a comment) the heading levels may be adjusted accordingly.</p>
