@@ -6,7 +6,7 @@ GIT="git -C $TEMP"
 
 set -ex
 
-cp -R spec/book/* $TEMP/
+cp -R ./book/* $TEMP/
 cp CNAME _config.yml $TEMP/
 
 $GIT init

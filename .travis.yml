@@ -20,7 +20,7 @@ before_script:
 
 script:
 - make lint
-- mdbook build spec/
+- mdbook build
 
 deploy:
   provider: script
