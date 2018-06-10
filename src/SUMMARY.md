@@ -1,5 +1,7 @@
 # Summary
 
+- [Introduction](./introduction.md)
+
 - [Preliminaries](./preliminaries.md)
   - [Characters](./preliminaries/characters.md)
 

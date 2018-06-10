@@ -1,15 +1,5 @@
 # Concept
 
-## General
-
-- there should always be only one way to do something
-- markup should look familiar (shouldn't invent anything new)
-- no ambiguous markup
-- graceful degrading (no parse errors)
-- extensibility (extensible blocks)
-- should also look fairly good when viewed as plain text
-
-
 ## Rules
 
 - Lines in text do not generate line breaks
